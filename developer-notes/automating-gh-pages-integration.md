@@ -1,3 +1,8 @@
+---
+title: Automating gh-pages branch updating with changes to the master branch
+layout: wikistyle
+---
+
 Automating gh-pages branch updating with changes to the master branch
 ================
 
