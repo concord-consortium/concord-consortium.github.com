@@ -8,6 +8,10 @@ Concord Consortium on GitHub
 
 Much of Concord Consortium's software development is hosted or mirrored to the [concord-consortium organization on github](https://github.com/organizations/concord-consortium).
 
+This site is for documenting development practices and tips for working with the Concord Consortium code. 
+
+The code for this site itself is located here: [https://github.com/concord-consortium/concord-consortium.github.com](https://github.com/concord-consortium/concord-consortium.github.com).
+
 Developer Notes
 -------------
 

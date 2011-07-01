@@ -18,6 +18,6 @@ Start the local Jekyll server:
 
     $ jekyll --server
 
-Open the concord-consortium Jekyll in your browser: [http://0.0.0.0:4000](http://0.0.0.0:4000)
+Open the concord-consortium jekyll site in your browser: [http://0.0.0.0:4000](http://0.0.0.0:4000)
 
 The configuration file: `_config.yml` enables automatic regeneration of the site when you make changes to files in this directory.
