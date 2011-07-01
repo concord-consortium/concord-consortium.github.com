@@ -12,4 +12,5 @@ Developer Notes
 -------------
 
 + [Get a local copy of this site running](developer-notes/get-a-local-copy-of-this-site.html)
++ [Automating gh-pages branch updating with changes to the master branch](developer-notes/automating-gh-pages-integration.html)
 

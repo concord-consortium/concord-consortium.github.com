@@ -1,6 +1,7 @@
-Github Pages repository for the Concord Consortium organization.
-
-See the content for this site here: [http://concord-consortium.github.com](http://concord-consortium.github.com)
+---
+title: Get a local copy of this site running
+layout: wikistyle
+---
 
 Get a local copy of this site running
 ================
