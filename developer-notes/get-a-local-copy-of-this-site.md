@@ -3,8 +3,13 @@ title: Get a local copy of this site running
 layout: wikistyle
 ---
 
-Get a local copy of this site running
-================
+<p>
+<a href="#get_a_local_copy_of_this_site_running">Get a local copy of this site running</a><br>
+<a href="#install_pip_and_pygments_on_mac_os_x">Install pip and Pygments on Mac OS X</a><br>
+<a href="#using_pygments_for_syntax_highlighting">Using Pygments for syntax highlighting</a>
+</p>
+
+## Get a local copy of this site running
 
 So you can see what your changes look like before pushing a commit.
 
@@ -12,7 +17,7 @@ This Github Pages site for the Concord Consortium organization uses [jekyll](htt
 
 [Install the Ruby Gem Jekyll](https://github.com/mojombo/jekyll/wiki/install)
 
-Install [Pygments](http://pygments.org/) also install the Python library Pygments using pip.
+Install the Python library [Pygments](http://pygments.org/) using pip.
 
     $ pip install pygments
 
@@ -24,10 +29,9 @@ Open the concord-consortium jekyll site in your browser: [http://0.0.0.0:4000](h
 
 The configuration file: `_config.yml` enables automatic regeneration of the site when you make changes to files in this directory.
 
-One way to install pip and Pygments on Mac OS X
-----------------
+## Install pip and Pygments on Mac OS X
 
-[pip](http://www.pip-installer.org/en/latest/index.html) is a Python package manager analogous to Ruby Gems.
+[pip](http://www.pip-installer.org/en/latest/index.html) is a Python package manager analogous to Ruby Gems. Here's one way to install pip and then use pip to install pygments on Mac OS X.
 
 I already have Python 2.7.1 installed using HomeBrew:
 
@@ -53,8 +57,7 @@ Now the pygmentize library is installed:
     $ which pygmentize
     /usr/local/share/python/pygmentize
 
-Using Pygments for syntax highlighting
-----------------
+## Using Pygments for syntax highlighting
 
 Pygments supports syntax highlighting for over [100 languages and markup formats](http://pygments.org/languages/).
 
