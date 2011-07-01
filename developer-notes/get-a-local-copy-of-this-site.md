@@ -27,7 +27,7 @@ The configuration file: `_config.yml` enables automatic regeneration of the site
 Using Pygments for syntax highlighting
 ----------------
 
-Pygments supports syntax highlighting for over [100 other languages and markup formats](http://pygments.org/languages/).
+Pygments supports syntax highlighting for over [100 languages and markup formats](http://pygments.org/languages/).
 
 **A Ruby example:**
 
