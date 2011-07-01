@@ -11,5 +11,5 @@ Much of Concord Consortium's software development is hosted or mirrored to the [
 Developer Notes
 -------------
 
-1) [Automating gh-pages branch updating with changes to the master branch](developer-notes/automating-gh-pages-integration.html)
++ [Get a local copy of this site running](developer-notes/get-a-local-copy-of-this-site.html)
 
