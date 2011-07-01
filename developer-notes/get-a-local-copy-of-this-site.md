@@ -24,6 +24,35 @@ Open the concord-consortium jekyll site in your browser: [http://0.0.0.0:4000](h
 
 The configuration file: `_config.yml` enables automatic regeneration of the site when you make changes to files in this directory.
 
+One way to install pip and Pygments on Mac OS X
+----------------
+
+[pip](http://www.pip-installer.org/en/latest/index.html) is a Python package manager analogous to Ruby Gems.
+
+I already have Python 2.7.1 installed using HomeBrew:
+
+    brew install python
+
+Update [setuptools](http://pypi.python.org/pypi/setuptools#cygwin-mac-os-x-linux-other)
+
+    cd python/src/
+    wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea
+    sh setuptools-0.6c11-py2.7.egg
+
+Install and run `get-pip`:
+
+    curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+    python get-pip.py
+
+Use pip to install pygments:
+
+    pip install pygments
+
+Now the pygmentize library is installed:
+
+    $ which pygmentize
+    /usr/local/share/python/pygmentize
+
 Using Pygments for syntax highlighting
 ----------------
 
@@ -113,28 +142,3 @@ diff --git a/meth-link-7056328.patch b/meth-link-7056328.patch
   </Directory>
 </VirtualHost>
 {% endhighlight %}
-
-One way to install pip and Pygments
-----------------
-
-[pip](http://www.pip-installer.org/en/latest/index.html) is a Python package manager analogous to Ruby Gems.
-
-I already have Python 2.7.1 installed using HomeBrew:
-
-    brew install python
-
-Update [setuptools](http://pypi.python.org/pypi/setuptools#cygwin-mac-os-x-linux-other)
-
-    cd python/src/
-    wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg#md5=fe1f997bc722265116870bc7919059ea
-    sh setuptools-0.6c11-py2.7.egg
-
-Install and run `get-pip`:
-
-    curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-    python get-pip.py
-
-Now the pygmentize library is installed:
-
-    $ which pygmentize
-    /usr/local/share/python/pygmentize
