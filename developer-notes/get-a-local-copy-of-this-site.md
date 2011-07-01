@@ -8,7 +8,7 @@ Get a local copy of this site running
 
 So you can see what your changes look like before pushing a commit.
 
-This Github Pages site for the Concord Consortium organization uses [jekyll](https://github.com/mojombo/jekyll) a Ruby static site generator that is automatically integrated into the GitHub Pages feature. See: http://pages.github.com/ for more information about how GitHub Pages works.
+This Github Pages site for the Concord Consortium organization uses [jekyll](https://github.com/mojombo/jekyll) a Ruby static site generator that is automatically integrated into the GitHub Pages feature. See: [pages.github.com](http://pages.github.com/) for more information about how GitHub Pages works.
 
 [Install the Ruby Gem Jekyll](https://github.com/mojombo/jekyll/wiki/install)
 
@@ -29,7 +29,17 @@ Using Pygments for syntax highlighting
 
 Pygments supports syntax highlighting for over [100 languages and markup formats](http://pygments.org/languages/).
 
-**A Ruby example:**
+Wrap the code to be highlighted with the lines:
+
+    {{ '{%' | escape }} highlight language %}
+    code ...
+    {{ '{%' | escape }} endhighlight %}
+    
+Replace **language** with the shortname for the language from one of the available [Pgyments lexers](http://pygments.org/docs/lexers/).
+
+### Pygments Syntax Highlighting Examples
+
+#### Ruby
 
 {% highlight ruby %}
 # Recursively converts the keys in a Hash to symbols.
@@ -57,7 +67,37 @@ end
 Hash.send(:include, HashExtensions)
 {% endhighlight %}
 
-**An Apache vhost example:**
+#### Ruby irb console session
+
+{% highlight irb %}
+>> a = [1, 2, 3]
+=> [1, 2, 3]
+>> a.class
+=> Array
+>> s = a.join("\n")
+=> "1\n2\n3"
+>> s.class
+=> String
+{% endhighlight %}
+
+#### diff
+
+{% highlight diff %}
+diff --git a/meth-link-7056328.patch b/meth-link-7056328.patch
+--- a/meth-link-7056328.patch
++++ b/meth-link-7056328.patch
+@@ -43,7 +43,7 @@
+      }
+    }
+ 
+-+  if (found_klass() == NULL && cpool->has_preresolution()) {
+++  if (found_klass() == NULL && !cpool.is_null() && cpool->has_preresolution()) {
+ +    // Look inside the constant pool for pre-resolved class entries.
+ +    for (int i = cpool->length() - 1; i >= 1; i--) {
+ +      if (cpool->tag_at(i).is_klass()) {
+{% endhighlight %}
+
+#### Apache vhost
 
 {% highlight apache %}
 <VirtualHost webgl-matrix-benchmarks.local:80>
