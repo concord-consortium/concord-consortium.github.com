@@ -114,11 +114,39 @@ server {
 
 See: [nginx](nginx-files/nginx.html)
 
-## After creating the nginx script confirm that it is configured correctly and then turn it on:
+## After creating the nginx script confirm that it is configured correctly and working:
+
+    $ sudo /etc/init.d/nginx stop
+    Stopping nginx:                                            [  OK  ]
+
+    $ curl -I http://localhost:8008/
+    curl: (7) couldn't connect to host
+
+    $ sudo /etc/init.d/nginx start
+    Starting nginx:                                            [  OK  ]
+
+    $ curl -I http://localhost:8008/
+    HTTP/1.1 200 OK
+    Server: nginx/1.0.6
+    Date: Mon, 26 Sep 2011 19:07:09 GMT
+    Content-Type: text/html
+    Content-Length: 151
+    Last-Modified: Mon, 26 Sep 2011 15:10:31 GMT
+    Connection: keep-alive
+    Accept-Ranges: bytes
+
+## Startup nginx when the server starts
+
+Make sure the nginx startup script run levels correspond to the active run level for the server:
+
+    $ who -r
+             run-level 3  2011-04-20 21:00                   last=S
 
     $ sudo /sbin/chkconfig --list nginx
     nginx          	0:off	1:off	2:on	3:on	4:on	5:on	6:off
-  
+
+Tell the server to start nginx when starting up:
+
     $ sudo /sbin/chkconfig nginx on
 
 ## Setup Apache to act as a reverse proxy for this nginx application:
