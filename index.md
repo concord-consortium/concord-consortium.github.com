@@ -17,4 +17,5 @@ Developer Notes
 
 + [Get a local copy of this site running](developer-notes/get-a-local-copy-of-this-site.html)
 + [Automating gh-pages branch updating with changes to the master branch](developer-notes/automating-gh-pages-integration.html)
++ [Install Ruby 1.9.2-p302, Passenger and Nginx on Development Server](developer-notes/installing-ruby-192-passenger-nginx.html)
 
