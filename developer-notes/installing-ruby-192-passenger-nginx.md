@@ -96,9 +96,19 @@ When running commands as the deploy3 user via SSH I also had to enable this in `
 
 ## Create a capistrano deploy for xproject-dev here: /web/xproject3.dev.concord.org. 
 
-See: [nginx.conf](nginx-files/nginx.conf.html)
+Modify the nginx configuration to respond at port 8008 and serve this capistrano deploy and tell passenger to use the `deploy3` user. 
 
-## Modify the nginx configuration to respond at port 8008 and serve this capistrano deploy and tell passenger to use the 'deploy3' user.
+{% highlight nginx %}
+server {
+   listen 8008;
+   server_name xproject3.dev.concord.org;
+   root /web/xproject3.dev.concord.org/current/public;
+   passenger_enabled on;
+   passenger_user deploy3;
+}
+{% endhighlight %}
+
+*See: [nginx.conf](nginx-files/nginx.conf.html)*
 
 ## Create an nginx service script in `/etc/init.d/nginx` for starting and stopping nginx. 
 
