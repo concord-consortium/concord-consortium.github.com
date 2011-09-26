@@ -3,9 +3,9 @@ title: Get a local copy of this site running
 layout: wikistyle
 ---
 
-# Installing Ruby 1.9.2-p302, Passenger 3.0.9, and Nginx 1.6 on a Development Server.
+# Installing Ruby 1.9.2-p302, Passenger 3.0.9, and Nginx 1.0.6 on a Development Server.
 
-This work was done to enable deployment of the rails3.0 branch of the rails-portal on otto but can easily be extended to support additional Rails or Rack based deployments using Passenger, Ruby 1.9.2 and Nginx.
+This work was done to enable deployment of the rails3.0 branch of the rails-portal but can easily be extended to support additional Rails or Rack based deployments using Passenger, Ruby 1.9.2 and Nginx.
 
 This pattern could easily be used on other servers already running Apache, Passenger, and Ruby 1.8.7.
 
@@ -57,11 +57,15 @@ To support ruby-ffi.
     sudo chown -R deploy3:users /home/deploy3/ruby
     sudo chmod -R g+rx /home/deploy3/ruby
 
+Another user can use this Ruby by adding this to their PATH:
+
+    $ export PATH=/home/deploy3/ruby/builds/1_9_2p302/bin:$PATH
+
 ## Switch to the deploy3 user:
 
     sudo -- su --login deploy3
 
-## Add the following to /home/deploy3/.bash_profile so deploy3 uses Ruby 1.9.2-p302
+## Add the following to /home/deploy3/.bash_profile so deploy3 automatically uses Ruby 1.9.2-p302
 
     PATH=/home/deploy3/ruby/builds/1_9_2p302/bin:$PATH:$HOME/bin
     export PATH
@@ -82,23 +86,51 @@ To support ruby-ffi.
 
     $ passenger-install-nginx-module
 
-## Tell the interactive installer to install nginx here:
+Tell the interactive installer to install nginx here: `/home/deploy3/nginx`
 
-    /home/deploy3/nginx
+## Enable SSH user environments:
 
-When running commands as the deploy3 user via SSH I also had to enable this in `/etc/ssh/sshd_config` so the deploy3 user used the PATH exported in `/home/deploy3/.bash_profile`:
+When running commands as the deploy3 user via SSH I also had to enable this in `/etc/ssh/sshd_config` so the deploy3 user uses the PATH to Ruby 1.9.2-p302 exported in `/home/deploy3/.bash_profile`:
 
     PermitUserEnvironment yes
 
-## Restart sshd:
+and restart sshd
 
     sudo service sshd restart
 
 ## Create a capistrano deploy for xproject-dev here: /web/xproject3.dev.concord.org. 
 
-Modify the nginx configuration to respond at port 8008 and serve this capistrano deploy and tell passenger to use the `deploy3` user. 
+## Deploy the application using Nginx and Passenger on port 8008
+
+Apache is already listening to port 80 and is configured to use Passenger with Ruby 1.8.7 so configure Nginx to use port 8008.
+
+Modify the nginx configuration to respond at port 8008 to serve this capistrano deploy and tell passenger to use the `deploy3` user. 
 
 {% highlight nginx %}
+server {
+    listen       8008;
+    server_name  localhost;
+
+    #charset koi8-r;
+
+    #access_log  logs/host.access.log  main;
+
+    location / {
+        root   html;
+
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   html;
+    }
+}
+
 server {
    listen 8008;
    server_name xproject3.dev.concord.org;
@@ -114,7 +146,7 @@ server {
 
 See: [nginx](nginx-files/nginx.html)
 
-## After creating the nginx script confirm that it is configured correctly and working:
+## After creating the nginx script confirm that it works:
 
     $ sudo /etc/init.d/nginx stop
     Stopping nginx:                                            [  OK  ]
